@@ -1,7 +1,7 @@
 var fn={
 	init:function(){
 		$("#btnRegistrar").click(fn.registrarUsuario);
-		alert("prueba");
+		
 	},
 
 	deviceready:function(){
@@ -53,9 +53,9 @@ var fn={
 
 
 
-		var obtenerNombre = window.localStorage.getItem("usuario");
+		/*var obtenerNombre = window.localStorage.getItem("usuario");
 		var NombreR  = JSON.parse(obtenerNombre);
-		console.log(NombreR.nombre);
+		console.log(NombreR.nombre);*/
 
 
 	}
