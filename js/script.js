@@ -4,7 +4,7 @@ var fn={
 	},
 
 	deviceready:function(){
-		document.addEventListener("diviceready",fn.init,false);
+		document.addEventListener("deviceready",fn.init,false);
 	},
 	registrarUsuario:function(){
 		//selecciona un elemento de la pantalla de registro
