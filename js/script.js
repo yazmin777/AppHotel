@@ -1,68 +1,67 @@
-var fn={
-	init:function(){
-		$("#btnRegistrar").click(fn.registrarUsuario);
-		
-	},
-
+var fn = {
 	deviceready:function(){
 		document.addEventListener("deviceready",fn.init,false);
 	},
+	init:function(){
+		$("#btnRegistrar").click(fn.registrarUsuario);
+	},
 	registrarUsuario:function(){
-		//selecciona un elemento de la pantalla de registro
-		var nombre   = $("#registro .nombre").val();
-		var email    = $("#registro .email").val();
-		var password = $("#registro .password").val();
-		/*console.log(nombre);
-		console.log(email);
-		console.log(password);*/
+		var nombre=$("#registro .nombre").val();
+
+		var email=$("#registro .email").val();
+		var password=$("#registro .password").val();
+		//console.log(nombre);
+		//console.log(email);
+		//console.log(password);
+
 		try{
-			if(nombre == ""){
-				throw new Error("El nombre esta vacio");
-			}
-			if(email == ""){
-				throw new Error("El email esta vacio");
-			}
-			if(password == ""){
-				throw new Error("La contraseña esta vacia");
-			}
-			fn.nuevoUsuario(nombre, email, password);
+				if(email==""){
+					throw new Error("El email está vacio");
+				}
+
+				if(nombre==""){
+					throw new Error("El nombre está vacio");
+				}
+
+				if(password==""){
+					throw new Error("El password está vacio");
+				}
+
+				fn.nuevoUsuario(nombre,email,password);
+
 
 		}
 		catch(error){
 			alert(error);
 		}
-
 	},
-	nuevoUsuario: function(nombre, email, password){
-		var usuario      = {};
-		usuario.nombre   = nombre;
-		usuario.email    = email;
-		usuario.password = password;
+	nuevoUsuario:function(nombre,email,password){
+		var usuario={};
+		usuario.nombre=nombre;
+		usuario.email=email;
+		usuario.password=password;
+		var usuariocadena=JSON.stringify(usuario);
+		//console.log(usuariocadena);
+		//GUARDAR EN LOCALSTORAGE
+		window.localStorage.setItem("usuario",usuariocadena);
+		var obtenerusuario= window.localStorage.getItem("usuario");
+		var objusuario = JSON.parse(obtenerusuario);
+		console.log(objusuario.nombre);
 
-		var usuarioCadena = JSON.stringify(usuario);
-		//console.log(usuarioCadena);
+		alert("Usuario: "+objusuario.nombre+" guardado");
+		$("#registro .nombre").val("");
+		$("#registro .email").val("");
+		$("#registro .password").val("");
 
-		//GURDAR EN LOCALSTORAGE
-		window.localStorage.setItem("usuario", usuarioCadena);
-
-		alert("Usuario:" +usuario.nombre+" guardado");
-
-			$("#registro .nombre").val("");
-			$("#registro .email").val("");
-			$("#registro .password").val("");
-
-
-
-		/*var obtenerNombre = window.localStorage.getItem("usuario");
-		var NombreR  = JSON.parse(obtenerNombre);
-		console.log(NombreR.nombre);*/
 
 
 	}
+
 };
 
-//COMPILAR PARA CELULAR
+
+//para compilar
 fn.deviceready();
 
-//PRUEBAS EN NAVEGADOR
+//para pruebas en navegador
 //fn.init();
