@@ -26,6 +26,9 @@ var fn={
 			}
 			fn.nuevoUsuario(nombre, email, password);
 
+			$("#registro .nombre").val("");
+			$("#registro .email").val("");
+			$("#registro .password").val("");
 		}
 		catch(error){
 			alert(error);
@@ -44,10 +47,13 @@ var fn={
 		//GURDAR EN LOCALSTORAGE
 		window.localStorage.setItem("usuario", usuarioCadena);
 
+		alert("Usuario:" +usuario.nombre+" guardado");
+
+
+
+
 		var obtenerNombre = window.localStorage.getItem("usuario");
-
 		var NombreR  = JSON.parse(obtenerNombre);
-
 		console.log(NombreR.nombre);
 
 
