@@ -1,6 +1,7 @@
 var fn={
 	init:function(){
 		$("#btnRegistrar").click(fn.registrarUsuario);
+		alert("prueba");
 	},
 
 	deviceready:function(){
