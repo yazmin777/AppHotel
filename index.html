@@ -8,22 +8,41 @@
 </head>
 <body>
 
-	<div id="inicio" data-role="page">
+	<div id="registro" data-role="page">
 		
 		<div data-role="header">
 			<h1>AppHotel</h1>
 		</div>
 		<div id="content" class="ui-content">
-			<p>
-				Ejemplo
-			</p>
+			<ul data-role="listview">
+				<li>
+					<input type="text" class="nombre" placeholder="Tu nombre">
+				</li>
+				<li>
+					<input type="email" class="email" placeholder="Tu email">
+				</li>
+				<li>
+					<input type="password" class="password" placeholder="Tu contraseña">
+				</li>
+
+			</ul>
 			
+		</div>
+		<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li>
+						<a id="btnRegistrar" class="ui-btn-active" href="#">Registrar</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 
 	<script src="phonegat.js" type="text/javascript"></script>
 	<script src="js/jquery-1.12.4.min.js" type="text/javascript"></script>
 	<script src="js/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
+	<script src="js/script.js" type="text/javascript"></script>
 
 	
 </body>
