@@ -26,9 +26,6 @@ var fn={
 			}
 			fn.nuevoUsuario(nombre, email, password);
 
-			$("#registro .nombre").val("");
-			$("#registro .email").val("");
-			$("#registro .password").val("");
 		}
 		catch(error){
 			alert(error);
@@ -49,6 +46,9 @@ var fn={
 
 		alert("Usuario:" +usuario.nombre+" guardado");
 
+			$("#registro .nombre").val("");
+			$("#registro .email").val("");
+			$("#registro .password").val("");
 
 
 
