@@ -6,6 +6,7 @@ var fn={
 		$("#btnReservar").click(fn.hacerReserva);
 		$("#btnHistorial").click(fn.historial);
 		$("#btnGaleria").click(fn.galeria);
+		//$("#ubicacion").click(fn.galeria);
 
 		//para celular se usa tap
 	},
