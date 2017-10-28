@@ -1,12 +1,16 @@
 var fn={
 	init:function(){
-		$("#btnRegistrar").click(fn.registrarUsuario);
-		$("#formulario1 a").click(fn.reserva1);
-		$("#btnSiguiente").click(fn.siguienteReserva1);
-		$("#btnReservar").click(fn.hacerReserva);
-		$("#btnHistorial").click(fn.historial);
+		$("#btnRegistrar").tap(fn.registrarUsuario);
+		$("#formulario1 a").tap(fn.reserva1);
+		$("#btnSiguiente").tap(fn.siguienteReserva1);
+		$("#btnReservar").tap(fn.hacerReserva);
+		$("#btnHistorial").tap(fn.historial);
 		$("#btnGaleria").click(fn.galeria);
-		//$("#ubicacion").click(fn.galeria);
+
+		//$("#btnUbicacion").tap(fn.ubicacion);
+		$("#ubicacion").on('pageshow',function(){
+			fn.cargarMapa();
+		});
 
 		//para celular se usa tap
 	},
@@ -14,7 +18,25 @@ var fn={
 	deviceready:function(){
 		document.addEventListener("deviceready",fn.init,false);
 	},
+	cargarMapa:function(){
+		var ubicacion ={lat:19.057,lng:-98.226};
 
+		var mapa=new google.maps.Map(document.getElementById("mapa"),{
+			zoom:15,
+			center: ubicacion
+		});
+
+
+		var marcador=new google.maps.Marker({
+			position:ubicacion,
+			map:mapa
+		});
+
+		
+		//$('#ubicacion').trigger("create");
+		//window.location.href = "#ubicacion";
+
+	},
 	galeria:function(){
 		var arregloFotos= ["1","2","3","4","5","6","7","8"];
 		var tabla="";
@@ -202,7 +224,7 @@ var fn={
 };
 
 //COMPILAR PARA CELULAR
-//fn.deviceready();
+fn.deviceready();
 
 //PRUEBAS EN NAVEGADOR
-fn.init();
+//fn.init();
