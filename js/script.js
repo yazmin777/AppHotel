@@ -5,10 +5,40 @@ var fn={
 		$("#btnSiguiente").click(fn.siguienteReserva1);
 		$("#btnReservar").click(fn.hacerReserva);
 		$("#btnHistorial").click(fn.historial);
+		$("#btnGaleria").click(fn.galeria);
+
+		//para celular se usa tap
 	},
 
 	deviceready:function(){
 		document.addEventListener("deviceready",fn.init,false);
+	},
+
+	galeria:function(){
+		var arregloFotos= ["1","2","3","4","5","6","7","8"];
+		var tabla="";
+		var cajasFotos="";
+		var bandera=1;
+
+		arregloFotos.forEach(function(nombreFoto){
+			if (bandera){
+				tabla+="<div class='ui-block-a'><a href='#"+nombreFoto+"' data-rel='popup' data-position-to='window'><img class='foto-galeria' src='img/galeria/"+ nombreFoto +".jpg'></a></div>";
+				bandera=0;
+			}
+			else{
+				tabla+="<div class='ui-block-b'><a href='#"+nombreFoto+"' data-rel='popup' data-position-to='window'><img class='foto-galeria' src='img/galeria/"+ nombreFoto +".jpg'></a></div>";
+				bandera=1;
+			}
+
+
+			cajasFotos+="<div id='"+nombreFoto+"' data-role='popup' data-overlay-theme='b' data-theme='b' > <a href='#'' data-rel='back' class='ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right'>Close</a><img src='img/galeria/"+ nombreFoto +".jpg'></a></div>";
+
+			
+		});
+
+		tabla+=cajasFotos;
+		$("#cajagaleria").html(tabla);
+		window.location.href = "#galeria";
 	},
 
 	historial: function(){
@@ -17,7 +47,7 @@ var fn={
 		var lista                = "";
 
 		arregloObjetos.forEach(function(reservacion){
-			lista += '<li>'+reservacion.tipoHabitacion+'</li>';
+			lista += '<li>Reservacion: '+reservacion.tipoHabitacion +' - '+reservacion.fecha+'</li>';
 		});
 
 		$("#historial ul").html(lista);
@@ -34,6 +64,8 @@ var fn={
 		 reservacion.numeroPersonas     = $("#reservaNumPersonas").val();
 		 reservacion.numeroDias         = $("#reservaNumDias").val();
 		 reservacion.numeroHabitaciones = $("#reservaNumHabitaciones").val();
+		 reservacion.fecha              = new Date();
+		 reservacion.fecha 				= reservacion.fecha.getDate()+"/"+(parseInt(reservacion.fecha.getMonth())+1)+"/"+reservacion.fecha.getFullYear();
 		
 		/*
 		 * OBTENER DATOS DE LOCALSTORAGE
@@ -168,7 +200,7 @@ var fn={
 };
 
 //COMPILAR PARA CELULAR
-//fn.deviceready();
+fn.deviceready();
 
 //PRUEBAS EN NAVEGADOR
-fn.init();
+//fn.init();
