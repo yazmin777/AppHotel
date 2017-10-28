@@ -22,11 +22,11 @@ var fn={
 
 		arregloFotos.forEach(function(nombreFoto){
 			if (bandera){
-				tabla+="<div class='ui-block-a'><a href='#"+nombreFoto+"' data-rel='popup' data-position-to='window'><img class='foto-galeria' src='img/galeria/"+ nombreFoto +".jpg'></a></div>";
+				tabla+="<div class='ui-block-a'><a href='#"+nombreFoto+"' data-rel='popup' data-position-to='window' data-transition='fade'><img class='foto-galeria' src='img/galeria/"+ nombreFoto +".jpg'></a></div>";
 				bandera=0;
 			}
 			else{
-				tabla+="<div class='ui-block-b'><a href='#"+nombreFoto+"' data-rel='popup' data-position-to='window'><img class='foto-galeria' src='img/galeria/"+ nombreFoto +".jpg'></a></div>";
+				tabla+="<div class='ui-block-b'><a href='#"+nombreFoto+"' data-rel='popup' data-position-to='window' data-transition='fade'><img class='foto-galeria' src='img/galeria/"+ nombreFoto +".jpg'></a></div>";
 				bandera=1;
 			}
 
@@ -38,6 +38,7 @@ var fn={
 
 		tabla+=cajasFotos;
 		$("#cajagaleria").html(tabla);
+		$('#galeria').trigger("create"); //reenderiza la pagina 
 		window.location.href = "#galeria";
 	},
 
@@ -200,7 +201,7 @@ var fn={
 };
 
 //COMPILAR PARA CELULAR
-fn.deviceready();
+//fn.deviceready();
 
 //PRUEBAS EN NAVEGADOR
-//fn.init();
+fn.init();
