@@ -1,10 +1,11 @@
 var geo= {
 	exito:function(position){
+		alert("exito");
 		var coordenadas={
 			lat:19.060354,
 			lng: -98.221015
 		};
-
+        
 		var map = new google.maps.Map(document.getElementById('mapa'), {
           zoom: 4,
           center: coordenadas
@@ -22,7 +23,7 @@ var geo= {
 	},
 
 	obtenerPosicion:function(){
-		alert("hola");
+
        navigator.geolocation.getCurrentPosition(geo.exito,geo.error);
 	}
 };
