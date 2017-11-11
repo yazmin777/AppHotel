@@ -22,6 +22,7 @@ var geo= {
 	},
 
 	obtenerPosicion:function(){
+		alert("hola");
        navigator.geolocation.getCurrentPosition(geo.exito,geo.error);
 	}
 };
