@@ -22,6 +22,8 @@ var fn={
 
 	ubicacion:function(){
 		geo.obtenerPosicion();
+		$('#ubicacion').trigger("create");
+		window.location.href = "#ubicacion";
 	},
 	cargarMapa:function(){   //ya no se ocupa
 		var ubicacion ={lat:19.057,lng:-98.226};
