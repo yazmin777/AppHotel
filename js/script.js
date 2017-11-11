@@ -9,7 +9,7 @@ var fn={
 		//$("#btnUbicacion").click(fn.ubicacion);
 
 		//$("#btnUbicacion").tap(fn.ubicacion);
-		/$("#ubicacion").on('pageshow',function(){
+		$("#ubicacion").on('pageshow',function(){
 			fn.ubicacion();
 		});
 
