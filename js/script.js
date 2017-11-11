@@ -6,11 +6,12 @@ var fn={
 		$("#btnReservar").tap(fn.hacerReserva);
 		$("#btnHistorial").tap(fn.historial);
 		$("#btnGaleria").click(fn.galeria);
+		$("#btnUbicacion").click(fn.ubicacion);
 
 		//$("#btnUbicacion").tap(fn.ubicacion);
-		$("#ubicacion").on('pageshow',function(){
-			fn.cargarMapa();
-		});
+		//$("#ubicacion").on('pageshow',function(){
+		//	fn.cargarMapa();
+		//});
 
 		//para celular se usa tap
 	},
@@ -18,7 +19,11 @@ var fn={
 	deviceready:function(){
 		document.addEventListener("deviceready",fn.init,false);
 	},
-	cargarMapa:function(){
+
+	ubicacion:function(){
+		geo.obtenerPosicion();
+	},
+	cargarMapa:function(){   //ya no se ocupa
 		var ubicacion ={lat:19.057,lng:-98.226};
 
 		var mapa=new google.maps.Map(document.getElementById("mapa"),{
