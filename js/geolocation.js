@@ -6,7 +6,7 @@ var geo= {
 			lng: -98.221015
 		};
         
-        var coordenadasUsuario{
+        var coordenadasUsuario={
         	lat: position.coords.latitude,
         	lng: position.coords.longitude
         }
@@ -39,6 +39,7 @@ var geo= {
 	},
 
 	obtenerPosicion:function(){
+		alert("hola");
        navigator.geolocation.getCurrentPosition(geo.exito,geo.error);
 	}
 };
