@@ -6,12 +6,12 @@ var fn={
 		$("#btnReservar").tap(fn.hacerReserva);
 		$("#btnHistorial").tap(fn.historial);
 		$("#btnGaleria").click(fn.galeria);
-		$("#btnUbicacion").click(fn.ubicacion);
+		//$("#btnUbicacion").click(fn.ubicacion);
 
 		//$("#btnUbicacion").tap(fn.ubicacion);
-		//$("#ubicacion").on('pageshow',function(){
-		//	fn.cargarMapa();
-		//});
+		$("#ubicacion").on('pageshow',function(){
+			fn.ubicacion();
+		});
 
 		//para celular se usa tap
 	},
@@ -39,8 +39,8 @@ var fn={
 		});
 
 		
-		//$('#ubicacion').trigger("create");
-		//window.location.href = "#ubicacion";
+		$('#ubicacion').trigger("create");
+		window.location.href = "#ubicacion";
 
 	},
 	galeria:function(){
