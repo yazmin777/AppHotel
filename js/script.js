@@ -9,7 +9,7 @@ var fn={
 		//$("#btnUbicacion").click(fn.ubicacion);
 
 		//$("#btnUbicacion").tap(fn.ubicacion);
-		$("#ubicacion").on('pageshow',function(){
+		/$("#ubicacion").on('pageshow',function(){
 			fn.ubicacion();
 		});
 
@@ -22,8 +22,6 @@ var fn={
 
 	ubicacion:function(){
 		geo.obtenerPosicion();
-		$('#ubicacion').trigger("create");
-		window.location.href = "#ubicacion";
 	},
 	cargarMapa:function(){   //ya no se ocupa
 		var ubicacion ={lat:19.057,lng:-98.226};
@@ -40,8 +38,8 @@ var fn={
 		});
 
 		
-		$('#ubicacion').trigger("create");
-		window.location.href = "#ubicacion";
+		//$('#ubicacion').trigger("create");
+		//window.location.href = "#ubicacion";
 
 	},
 	galeria:function(){
