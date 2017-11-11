@@ -1,6 +1,6 @@
 var geo= {
 	exito:function(position){
-		alert("exito");
+		//alert("exito");
 		var coordenadas={
 			lat:19.060354,
 			lng: -98.221015
