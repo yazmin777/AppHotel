@@ -6,12 +6,12 @@ var fn={
 		$("#btnReservar").tap(fn.hacerReserva);
 		$("#btnHistorial").tap(fn.historial);
 		$("#btnGaleria").click(fn.galeria);
-		//$("#btnUbicacion").click(fn.ubicacion);
+		$("#btnUbicacion").tap(fn.ubicacion);
 
 		//$("#btnUbicacion").tap(fn.ubicacion);
-		$("#ubicacion").on('pageshow',function(){
-			fn.ubicacion();
-		});
+		//$("#ubicacion").on('pageshow',function(){
+		//	fn.ubicacion();
+		//});
 
 		//para celular se usa tap
 	},
