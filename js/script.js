@@ -22,6 +22,7 @@ var fn={
 
 	ubicacion:function(){
 		geo.obtenerPosicion();
+		$('#ubicacion').trigger("create");
 		window.location.href = "#ubicacion";
 	},
 	cargarMapa:function(){   //ya no se ocupa
