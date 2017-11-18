@@ -239,6 +239,7 @@ var fn={
 		*/
 		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
         console.log(error)
+        alert(error);
         var errorCode = error.code;
         var errorMessage = error.message;
   
