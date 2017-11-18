@@ -205,11 +205,7 @@ var fn={
 			}
 			fn.nuevoUsuario(nombre, email, password);
 
-			$("#registro .nombre").val("");
-			$("#registro .email").val("");
-			$("#registro .password").val("");
-
-			window.location.href = "#inicio";
+			
 		}
 		catch(error){
 			alert(error);
@@ -237,7 +233,14 @@ var fn={
 		console.log(NombreR.nombre);
 		$("#msj").html ("Bienvenido " + nombre);
 		*/
-		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+		firebase.auth().createUserWithEmailAndPassword(email, password).then(function(){
+			$("#registro .nombre").val("");
+			$("#registro .email").val("");
+			$("#registro .password").val("");
+
+			window.location.href = "#inicio";
+		})
+		.catch(function(error) {
         console.log(error)
         alert(error);
         var errorCode = error.code;
