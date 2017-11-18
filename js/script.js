@@ -1,12 +1,15 @@
 var fn={
 	init:function(){
 		$("#btnRegistrar").tap(fn.registrarUsuario);
+		$("#btnIniciaSesion").tap(fn.iniciaSesion);
+		$("#btnIngresar").tap(fn.ingresar);
 		$("#formulario1 a").tap(fn.reserva1);
 		$("#btnSiguiente").tap(fn.siguienteReserva1);
 		$("#btnReservar").tap(fn.hacerReserva);
 		$("#btnHistorial").tap(fn.historial);
 		$("#btnGaleria").click(fn.galeria);
 		$("#btnUbicacion").tap(fn.ubicacion);
+		$("#btnSalir").tap(fn.salir);
 
 		//$("#btnUbicacion").tap(fn.ubicacion);
 		//$("#ubicacion").on('pageshow',function(){
@@ -20,6 +23,13 @@ var fn={
 		document.addEventListener("deviceready",fn.init,false);
 	},
 
+	salir:function(){
+		firebase.auth().signOut().then(function() {
+			window.location.href="#registro";
+		}).catch(function(error) {
+			alert("No se pudo cerrar sesion");
+		});
+	},
 	ubicacion:function(){
 		geo.obtenerPosicion();
 		$('#ubicacion').trigger("create");
@@ -207,11 +217,12 @@ var fn={
 
 	},
 	nuevoUsuario: function(nombre, email, password){
-		var usuario      = {};
+		//CODIGO PARA GUARDAR EN LOCAL STORAGE
+		/*var usuario      = {};
 		usuario.nombre   = nombre;
 		usuario.email    = email;
 		usuario.password = password;
-
+		
 		var usuarioCadena = JSON.stringify(usuario);
 		//console.log(usuarioCadena);
 
@@ -225,8 +236,76 @@ var fn={
 		var NombreR  = JSON.parse(obtenerNombre);
 		console.log(NombreR.nombre);
 		$("#msj").html ("Bienvenido " + nombre);
+		*/
+		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+        console.log(error)
+        var errorCode = error.code;
+        var errorMessage = error.message;
+  
+});
+
+	},
+	iniciaSesion:function(){
+
+		window.location.href = "#iniciaSesion";
+	},
+	ingresar:function(){
+		var email   = $("#iniciaSesion .email").val();
+		var password    = $("#iniciaSesion .password").val();
+
+	//try{
+
+		firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+  		window.location.href = "#inicio";
+
+  		}).catch(function(error){
+			console.log(error);
+			alert("Email o contraseña incorrecta");
+			var errorCode = error.code;
+  			var errorMessage = error.message;
+  		});
+	//}
 
 
+		/*
+		try{
+			if(email == ""){
+				throw new Error("El email esta vacio");
+			}
+			if(password == ""){
+				throw new Error("La contraseña esta vacia");
+			}
+			
+			//checar si existe en local storage
+			var obtenerDatos = window.localStorage.getItem("usuario");
+		    var Datos  = JSON.parse(obtenerDatos);
+		    var emailLS =Datos.email;
+		    var passwordLS=Datos.password;
+
+		    if(email == emailLS){
+		    	if (password == passwordLS) {
+                    //alert("datos correctos");
+		    	}
+		    	else
+		    		throw new Error ("El password es incorrecto");
+		    }
+		    else
+		    {
+		    	throw new Error("El email es incorrecto");
+		    }
+
+		    //fn.nuevoUsuario(nombre, email, password);
+			
+			$("#iniciaSesion .email").val("");
+			$("#iniciaSesion .password").val("");
+
+			window.location.href = "#inicio";
+		}
+		catch(error){
+			alert(error);
+		}
+		*/
+		
 	}
 };
 

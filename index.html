@@ -30,11 +30,39 @@
 			<div data-role="navbar">
 				<ul>
 					<li>
+						<a id="btnIniciaSesion" class="ui-btn-active" href="#">Iniciar Sesion</a>
+					</li>
+					<li>
 						<a id="btnRegistrar" class="ui-btn-active" href="#">Registrar</a>
 					</li>
 				</ul>
 			</div>
 		</div>
+	</div>
+
+    <div id="iniciaSesion" data-role="page">
+		<div data-role="header">
+			<a href="#" data-rel="back">Atrás</a>
+			<h1>Inicia Sesión</h1>
+		</div>
+		<div data-role="content" class="ui-content">
+			<ul data-role="listview">
+				<li>
+					<input type="email" class="email" placeholder="Tu email">
+				</li>
+				<li>
+					<input type="password" class="password" placeholder="Tu contraseña">
+				</li>
+				
+			</ul>
+		</div>
+		<div data-role="navbar">
+				<ul>
+					<li>
+						<a id="btnIngresar" class="ui-btn-active" href="#">Iniciar Sesion</a>
+					</li>
+				</ul>
+			</div>
 	</div>
 
 
@@ -50,6 +78,7 @@
 				<li><a id ="btnGaleria" href="#">Galería</a></li>
 				<li><a id="btnUbicacion" href="#">Ubicación</a></li>
 				<li><a href="#">Términos y Condiciones</a></li>
+				<li><a id="btnSalir"  href="#">Salir</a></li>
 			</ul>
 		</div>
 		<div data-role="footer" data-position="fixed">
@@ -185,7 +214,26 @@
 	<script src="js/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
 	<script async defer src="https://maps.googleapis.com/maps/api/js"></script>
 	<script src="js/geolocation.js" type="text/javascript"></script>
-	<script src="js/script.js" type="text/javascript"></script>
+	
+	<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-messaging.js"></script>
+    <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBIRswPLsGGeKWA3AkpXXxoMXkjLXb3th0",
+    authDomain: "apphotel-c50f3.firebaseapp.com",
+    databaseURL: "https://apphotel-c50f3.firebaseio.com",
+    projectId: "apphotel-c50f3",
+    storageBucket: "apphotel-c50f3.appspot.com",
+    messagingSenderId: "1073766557618"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script src="js/script.js" type="text/javascript"></script>
 
 </body>
 </html>
