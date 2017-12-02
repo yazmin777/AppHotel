@@ -83,6 +83,8 @@ var fn={
 	},
 
 	historial: function(){
+		
+		/* con localstorage
 		var arregloReservaciones = window.localStorage.getItem("reservaciones");
 		var arregloObjetos       = JSON.parse(arregloReservaciones);		
 		var lista                = "";
@@ -90,9 +92,26 @@ var fn={
 		arregloObjetos.forEach(function(reservacion){
 			lista += '<li>Reservacion: '+reservacion.tipoHabitacion +' - '+reservacion.fecha+'</li>';
 		});
+		*/
+		
 
-		$("#historial ul").html(lista);
+		//con firebase
+		
+		var userId = firebase.auth().currentUser.uid;
+		//alert(userId)
+		var lista= "";
+		$("#historial ul").html("");
+		var ruta_res=firebase.database().ref('Reservaciones/'+ userId);
+		//ruta_res.once('value').then(function(data){  // como objeto es dificil leer la informacionm
+		ruta_res.on('child_added',function(reservacion){    //como lista es mas facil
+			console.log(reservacion.val());
+			$("#historial ul").append('<li>Reservacion:'+reservacion.val().tipoHabitacion+' - '+reservacion.val().fecha+'</li>');
+		  //lista+='<li>Reservacion:'+reservacion.val().tipoHabitacion+' - '+reservacion.val().fecha+'</li>';
 
+		});	
+  		console.log(lista);
+		
+	
 		window.location.href = "#historial";
 	},
 
@@ -108,10 +127,23 @@ var fn={
 		 reservacion.fecha              = new Date();
 		 reservacion.fecha 				= reservacion.fecha.getDate()+"/"+(parseInt(reservacion.fecha.getMonth())+1)+"/"+reservacion.fecha.getFullYear();
 		
+		 //var database = firebase.database();
+		  /*var reservacion=null;
+		 reservacion=database().ref('Reservaciones/')
+		 reservacion.push({
+		 	tipoHabitacion: reservacion.tipoHabitacion,
+    		numeroPersonas: reservacion.numeroPersonas,
+    		numeroDias : reservacion.numeroDias
+    	});
+		*/
+		var userId = firebase.auth().currentUser.uid;
+		firebase.database().ref().child('Reservaciones/'+userId).push(reservacion);
+		
+
 		/*
 		 * OBTENER DATOS DE LOCALSTORAGE
 		 */
-		 var reservacionesLocal =  window.localStorage.getItem("reservaciones");
+		var reservacionesLocal =  window.localStorage.getItem("reservaciones");
 		console.log(reservacionesLocal);
 
 		if(reservacionesLocal == null){
@@ -146,7 +178,7 @@ var fn={
 		window.location.href = "#inicio";
 	},
 
-	siguienteReserva1: function(){
+  	siguienteReserva1: function(){
 		var tipohab = $("#reserva1").attr("tipo-habitacion");
 		
 		try{
