@@ -100,18 +100,29 @@ var fn={
 		var userId = firebase.auth().currentUser.uid;
 		//alert(userId)
 		var lista= "";
+		var cajasHistorial="";
+		var reg ="";
+		var nreg=0;
 		$("#historial ul").html("");
 		var ruta_res=firebase.database().ref('Reservaciones/'+ userId);
 		//ruta_res.once('value').then(function(data){  // como objeto es dificil leer la informacionm
 		ruta_res.on('child_added',function(reservacion){    //como lista es mas facil
-			console.log(reservacion.val());
-			$("#historial ul").append('<li>Reservacion:'+reservacion.val().tipoHabitacion+' - '+reservacion.val().fecha+'</li>');
+			//console.log(reservacion.val());
+			//$("#historial ul").append('<li>Reservacion:'+reservacion.val().tipoHabitacion+' - '+reservacion.val().fecha+'</li>');
+		    reg="<li><a href='#RH"+nreg+"' data-rel='popup' data-position-to='window' data-transition='fade'>Reservacion:"+reservacion.val().tipoHabitacion+' - '+reservacion.val().fecha+"</a></li>";
+		    //console.log(reg);
+		    cajasHistorial+="<div id='RH"+nreg+"' data-role='popup' data-overlay-theme='b' data-theme='b' > <a href='#' data-rel='back' class='ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right'>Close</a><br/><h3>Reservacion</h3><span>Tipo de Habitación:"+ reservacion.val().tipoHabitacion+"</span><span>Numero de Habitaciones:"+ reservacion.val().numeroHabitaciones +"</span><span>Numero de Dias:"+ reservacion.val().numeroDias +"</span><span>Numero de Personas:"+ reservacion.val().numeroPersonas +"</span></div>";
+			//console.log(cajasHistorial);
+			reg+=cajasHistorial;
+			$("#historial ul").append(reg);
+			cajasHistorial="";
+ 			nreg+=1;
+ 			$('#historial').trigger("create");
 		  //lista+='<li>Reservacion:'+reservacion.val().tipoHabitacion+' - '+reservacion.val().fecha+'</li>';
 
 		});	
-  		console.log(lista);
+  		//console.log(lista);
 		
-	
 		window.location.href = "#historial";
 	},
 
@@ -346,7 +357,7 @@ var fn={
 };
 
 //COMPILAR PARA CELULAR
-fn.deviceready();
+//fn.deviceready();
 
 //PRUEBAS EN NAVEGADOR
-//fn.init();
+fn.init();
