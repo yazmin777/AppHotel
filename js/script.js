@@ -357,7 +357,7 @@ var fn={
 };
 
 //COMPILAR PARA CELULAR
-//fn.deviceready();
+fn.deviceready();
 
 //PRUEBAS EN NAVEGADOR
-fn.init();
+//fn.init();
