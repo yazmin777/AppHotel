@@ -8,7 +8,7 @@ var camara ={
 	error:function(error){
 		alert("Ocurrio un error al tomar foto: "+error);
 	},
-	tomarfoto:function(){
+	tomarFoto:function(){
 		navigator.device.capture.captureImage(camara.exito,camara.error,{limit:1});
 	}
 

@@ -68,7 +68,7 @@ var fn={
 
        //unir arreglo de fotos con el arrelgo de fotos tomadas
 
-       arregloFotos=arregloFotos.concat(rutasFotos);
+       arregloFotos=arregloFotos.concat(fn.rutasFotos);
 
 		arregloFotos.forEach(function(nombreFoto){
 			if (bandera){
