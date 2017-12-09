@@ -19,12 +19,12 @@ var fn={
 		//});
 
 		//para celular se usa tap
-		alert("hola");
+		fn.checkConnection();
 	},
 
 	deviceready:function(){
 		document.addEventListener("deviceready",fn.init,false);
-		fn.checkConnection();
+		
 	},
 
 
