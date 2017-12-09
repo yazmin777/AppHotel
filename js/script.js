@@ -69,7 +69,7 @@ var fn={
        //unir arreglo de fotos con el arrelgo de fotos tomadas
 
        arregloFotos=arregloFotos.concat(fn.rutasFotos);
-
+       alert(fn.rutasFotos);
 		arregloFotos.forEach(function(nombreFoto){
 			if (bandera){
 				tabla+="<div class='ui-block-a'><a href='#"+nombreFoto+"' data-rel='popup' data-position-to='window' data-transition='fade'><img class='foto-galeria' src='"+ nombreFoto +"'></a></div>";

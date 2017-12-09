@@ -3,7 +3,7 @@ var camara ={
 		var ruta;
 		ruta=mediaFiles[0].fullPath;
 		fn.rutasFotos.push(ruta);
-		alert("Foto tomada, ve a galeria");
+		alert(ruta);
 	},
 	error:function(error){
 		alert("Ocurrio un error al tomar foto: "+error);
