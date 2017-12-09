@@ -10,6 +10,7 @@
 
         <preference name="phonegap-version" value="cli-6.5.0" />
         <preference name="permissions" value="none"/>
+        <preference name="SplashScreenDelay" value="5000"/>
         
               
         <name>AppHotel</name>
@@ -23,7 +24,7 @@
         </author>
 
         <icon src="img/icono.png" />
-        <splash src="img/splash.png" />
+        <splash src="img/splash.jpg" />
 
         <plugin name="cordova-plugin-whitelist" source="npm" spec="1.1.0"  />
         <plugin name="cordova-plugin-geolocation" source="npm" spec="1.0.0" />
