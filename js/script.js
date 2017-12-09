@@ -24,14 +24,14 @@ var fn={
 
 	deviceready:function(){
 		document.addEventListener("deviceready",fn.init,false);
-		document.addEventListener("offline", fn.checkConnection, false);
+		document.addEventListener("offline", fn.onOffline, false);
 		
 	},
 
 
-	checkConnection() {
+	onOffline() {
     var networkState = navigator.connection.type;
- 
+ /*
     var states = {};
     states[Connection.UNKNOWN]  = 'Unknown connection';
     states[Connection.ETHERNET] = 'Ethernet connection';
@@ -45,7 +45,10 @@ var fn={
     if (states[networkState]=='No network connection'){
     	alert('No tienes conexión a internet');
     }
-    
+    */
+    if (networkState == Connection.NONE) {
+        alert('No tienes conexión a internet');
+    }
     
     },
 
