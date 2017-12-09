@@ -20,17 +20,17 @@ var fn={
 
 		//para celular se usa tap
 		//fn.checkConnection();
+		document.addEventListener("offline", fn.onOffline, false);
 	},
 
 	deviceready:function(){
 		document.addEventListener("deviceready",fn.init,false);
-		document.addEventListener("offline", fn.onOffline, false);
 		
 	},
 
 
 	onOffline() {
-    var networkState = navigator.connection.type;
+    //var networkState = navigator.connection.type;
  /*
     var states = {};
     states[Connection.UNKNOWN]  = 'Unknown connection';
@@ -46,9 +46,9 @@ var fn={
     	alert('No tienes conexión a internet');
     }
     */
-    if (networkState == Connection.NONE) {
+    //if (networkState == Connection.NONE) {
         alert('No tienes conexión a internet');
-    }
+    //}
     
     },
 
