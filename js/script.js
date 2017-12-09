@@ -1,4 +1,5 @@
 var fn={
+	rutasFotos:[],
 	init:function(){
 		$("#btnRegistrar").tap(fn.registrarUsuario);
 		$("#btnIniciaSesion").tap(fn.iniciaSesion);
@@ -10,6 +11,7 @@ var fn={
 		$("#btnGaleria").click(fn.galeria);
 		$("#btnUbicacion").tap(fn.ubicacion);
 		$("#btnSalir").tap(fn.salir);
+		$("#btnFoto").tap(fn.tomarFoto);
 
 		//$("#btnUbicacion").tap(fn.ubicacion);
 		//$("#ubicacion").on('pageshow',function(){
@@ -21,6 +23,10 @@ var fn={
 
 	deviceready:function(){
 		document.addEventListener("deviceready",fn.init,false);
+	},
+
+	tomarFoto:function(){
+		camara.tomarFoto();
 	},
 
 	salir:function(){
@@ -59,6 +65,10 @@ var fn={
 		var tabla="";
 		var cajasFotos="";
 		var bandera=1;
+
+       //unir arreglo de fotos con el arrelgo de fotos tomadas
+
+       arregloFotos=arregloFotos.concat(rutasFotos);
 
 		arregloFotos.forEach(function(nombreFoto){
 			if (bandera){
