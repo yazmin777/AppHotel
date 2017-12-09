@@ -39,6 +39,12 @@ var geo = {
         alert("ERROR: "+ error.message);
     },
     obtenerPosicion: function(){
-        navigator.geolocation.getCurrentPosition(geo.exito, geo.error);
+        try{
+        navigator.geolocation.getCurrentPosition(geo.exito, geo.error);    
+        }
+        catch{
+            alert("Ocurrio un error");
+        }
+        
     }
 };
