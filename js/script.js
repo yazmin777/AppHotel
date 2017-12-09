@@ -19,6 +19,7 @@ var fn={
 		//});
 
 		//para celular se usa tap
+		alert("hola");
 	},
 
 	deviceready:function(){
